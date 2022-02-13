@@ -1,4 +1,5 @@
 const express = require('express')
+const { getStartTimes, getEndTimes, getDates } = require('./util/dataCleaning')
 
 const app = express()
 
@@ -23,8 +24,9 @@ app.get('/api/v1/getSchedule', (req, res) =>
       if(data.includes('ENDOFDATA'))
       {
         //Clean up the data
-        data = data.substring(data.indexOf("STARTOFDATA") + 11, data.lastIndexOf("ENDOFDATA"))
-        res.json({msg: data})
+        data = data.substring(data.indexOf("STARTOFDATA\n") + 13, data.lastIndexOf("\nENDOFDATA"))
+        console.log(data)
+        res.json({dates: getDates(data), startTimes: getStartTimes(data), endTimes: getEndTimes(data)})
       }
       else 
       {

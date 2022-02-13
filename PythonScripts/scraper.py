@@ -54,5 +54,5 @@ dataToSendBack = ""
 for i in range(0,7):
   dataToSendBack += scheduleListDay[i] + ' : ' + scheduleListHour[i] + '\n'
 
-print("STARTOFDATA\n" + dataToSendBack + " ENDOFDATA")
+print("STARTOFDATA\n" + dataToSendBack + "ENDOFDATA")
 sys.stdout.flush()
